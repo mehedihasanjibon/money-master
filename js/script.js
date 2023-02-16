@@ -24,6 +24,31 @@ document.getElementById("btn-calculate").addEventListener("click", function(){
       alert("Please enter a valid number");
    }
    const expendSum = foodValue + rentValue + clothesValue;
-   console.log(expendSum);
+   
+   const totalExpense = document.getElementById("total-expenses").innerText = expendSum;
+   const incomeField = document.getElementById("income-field").value;
+   const incomeFieldValue = parseFloat(incomeField);
 
+   const incomeFieldValueExpense = incomeFieldValue - totalExpense;
+   document.getElementById("balance").innerText = incomeFieldValueExpense;
+});
+
+document.getElementById("btn-save").addEventListener("click", function(){
+
+   const saveInputField = document.getElementById("save-field").value;
+   const saveInputFieldValue = parseFloat(saveInputField);
+
+   const balance = document.getElementById("balance").innerText;
+   const balanceNumber = parseFloat(balance);
+
+   const calculateSaving = (balanceNumber * saveInputFieldValue / 100);
+
+   document.getElementById("saving-amount").innerText = calculateSaving;
+   
+   if(saveInputFieldValue < 0 || isNaN(saveInputFieldValue)){
+      alert("enter a valid number!");
+   }
+
+   const finalTotal = balanceNumber  - calculateSaving;
+   document.getElementById("remaining-total").innerText = finalTotal;
 });
